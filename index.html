@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project Fernet</title>
+<style>
+  body{margin:0;background:#050b18;color:#fff;font-family:-apple-system,Helvetica,Arial,sans-serif;
+       display:flex;min-height:100vh;align-items:center;justify-content:center;text-align:center}
+  a{color:#1fdbea;font-weight:700}
+</style>
+</head>
+<body>
+<div>
+  <p id="msg">Returning to Project Fernet …</p>
+  <p><a id="link" href="#">Tap here if nothing happens</a></p>
+</div>
+<script>
+  // Discord sends the token in the URL fragment (#access_token=...) or an error in the query (?error=...).
+  var payload = location.hash ? location.hash : location.search.replace(/^\?/, "#");
+  var target = "projectfernet://auth" + payload;
+  document.getElementById("link").href = target;
+  location.replace(target);
+</script>
+</body>
+</html>
